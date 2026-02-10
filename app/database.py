@@ -4,7 +4,7 @@ import pyodbc
 SQL_SERVER = r"localhost\SQLEXPRESS"          # of "SERVERNAAM\\SQLEXPRESS"
 SQL_DATABASE = "LogoGateway"
 SQL_USER = "logogw_user"
-SQL_PASSWORD = "Kevin5778"  # zelfde als in SQL script
+SQL_PASSWORD = "SterkWachtwoord"  # zelfde als in SQL script
 
 CONN_STR = (
     "DRIVER={ODBC Driver 18 for SQL Server};"
