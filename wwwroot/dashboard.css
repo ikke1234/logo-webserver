@@ -1,0 +1,93 @@
+body { font-family: Arial, sans-serif; background:#f5e9df; margin:0; }
+
+.err { color:#c0392b; }
+.small { font-size:12px; color:#333; }
+.row { display:flex; gap:10px; margin:8px 0; }
+.linkbtn { margin-top:10px; background:none; border:none; color:#0078d4; cursor:pointer; text-decoration:underline; }
+
+#login-panel, #pw-panel {
+  max-width: 360px;
+  margin: 40px auto;
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+#login-panel input, #pw-panel input, #login-panel select {
+  width:100%;
+  padding:8px;
+  box-sizing:border-box;
+}
+
+#login-panel button, #pw-panel button {
+  width:100%;
+  padding:10px;
+  font-size:14px;
+}
+
+#topbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#ddd;
+  padding:10px;
+}
+
+#tabbar { display:flex; gap:10px; }
+#tabbar button { padding:8px 12px; }
+
+#rightbar { display:flex; gap:10px; align-items:center; }
+#rightbar button { padding:8px 10px; }
+#plcstatus { font-size:12px; padding:4px 8px; border-radius:6px; background:#eee; }
+
+.grid-stack { margin:10px; }
+
+.widgetCard {
+  background:#d3d7dd;
+  border-radius:8px;
+  padding:10px;
+  height:100%;
+  box-sizing:border-box;
+  position:relative;
+  overflow:hidden;
+}
+
+.widgetTitle { font-weight:bold; margin-bottom:8px; }
+.widgetValue { font-size:28px; font-weight:bold; }
+.widgetUnit { font-size:14px; }
+
+.lamp {
+  width: 24px; height:24px; border-radius:50%;
+  border:2px solid #444; display:inline-block; margin-right:10px;
+}
+.lamp.on { background:#2ecc71; }
+.lamp.off { background:#e74c3c; }
+
+.widgetBtns button { padding:8px 10px; }
+
+.delBtn {
+  position:absolute; right:8px; top:8px;
+  border:none; background:#fff; cursor:pointer;
+  border-radius:6px; padding:4px 8px;
+  display:none;
+}
+
+/* admin panel */
+#adminPanel { padding:10px; }
+.adminGrid {
+  display:grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 10px;
+}
+.adminCard {
+  background:#fff;
+  border:1px solid #ccc;
+  border-radius:8px;
+  padding:10px;
+}
+.adminCard input, .adminCard select {
+  width:100%;
+  padding:8px;
+  box-sizing:border-box;
+}

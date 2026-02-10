@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <title>Logo Gateway</title>
+
+  <link rel="stylesheet" href="dashboard.css" />
+
+  <!-- GridStack (drag/drop grid) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridstack@11.3.1/dist/gridstack.min.css">
+</head>
+<body>
+
+  <div id="login-panel">
+    <h2>Inloggen</h2>
+    <label>Gebruikersnaam</label><br />
+    <input id="login-username" /><br /><br />
+    <label>Wachtwoord</label><br />
+    <input id="login-password" type="password" /><br /><br />
+    <button onclick="login()">Login</button>
+
+    <button class="linkbtn" onclick="forgotPassword()">Wachtwoord vergeten</button>
+    <p id="login-error" class="err"></p>
+  </div>
+
+  <div id="pw-panel" style="display:none;">
+    <h2>Wachtwoord wijzigen</h2>
+    <p>Je moet je wachtwoord wijzigen.</p>
+    <label>Oud wachtwoord</label><br>
+    <input id="pw-old" type="password"><br><br>
+    <label>Nieuw wachtwoord</label><br>
+    <input id="pw-new" type="password"><br><br>
+    <button onclick="changePassword()">Opslaan</button>
+    <p id="pw-error" class="err"></p>
+  </div>
+
+  <div id="app" style="display:none;">
+    <div id="topbar">
+      <div id="tabbar"></div>
+
+      <div id="rightbar">
+        <span id="plcstatus"></span>
+        <button id="btnEdit" style="display:none;" onclick="toggleEdit()">Edit layout</button>
+        <button id="btnSave" style="display:none;" onclick="saveLayout()">Opslaan</button>
+        <button id="btnAddWidget" style="display:none;" onclick="showAddWidget()">+ Widget</button>
+        <button id="btnAdmin" style="display:none;" onclick="toggleAdmin()">Beheer</button>
+      </div>
+    </div>
+
+    <!-- Dashboard grid -->
+    <div class="grid-stack" id="grid"></div>
+
+    <!-- Admin panel -->
+    <div id="adminPanel" style="display:none;">
+      <h2>Beheer</h2>
+
+      <div class="adminGrid">
+        <div class="adminCard">
+          <h3>Gebruiker toevoegen</h3>
+          <input id="au_user" placeholder="username"><br><br>
+          <input id="au_pass" placeholder="temp password"><br><br>
+          <select id="au_role">
+            <option value="viewer">viewer</option>
+            <option value="editor">editor</option>
+          </select><br><br>
+          <button onclick="adminCreateUser()">Aanmaken</button>
+          <div id="au_msg" class="small"></div>
+        </div>
+
+        <div class="adminCard">
+          <h3>Users</h3>
+          <button onclick="loadUsers()">Ververs</button>
+          <div id="usersTable" class="small"></div>
+        </div>
+
+        <div class="adminCard">
+          <h3>Tab toevoegen</h3>
+          <input id="at_name" placeholder="naam"><br><br>
+          <input id="at_sort" type="number" value="10"><br><br>
+          <button onclick="adminAddTab()">Tab toevoegen</button>
+          <div id="at_msg" class="small"></div>
+        </div>
+
+        <div class="adminCard">
+          <h3>Tab rechten (ACL)</h3>
+          <input id="acl_tab" type="number" placeholder="tab_id"><br><br>
+          <input id="acl_user" type="number" placeholder="user_id"><br><br>
+          <label><input id="acl_view" type="checkbox" checked> view</label><br>
+          <label><input id="acl_edit" type="checkbox"> edit</label><br><br>
+          <button onclick="adminSetAcl()">Opslaan</button>
+          <div id="acl_msg" class="small"></div>
+        </div>
+      </div>
+
+      <div class="adminCard">
+        <h3>Widget toevoegen</h3>
+        <div class="row">
+          <select id="w_type">
+            <option value="gauge">gauge</option>
+            <option value="analog">analog</option>
+            <option value="lamp">lamp</option>
+            <option value="toggle">toggle</option>
+            <option value="setpoint">setpoint</option>
+            <option value="text">text</option>
+          </select>
+          <input id="w_title" placeholder="titel">
+        </div>
+
+        <p class="small">Adres kiezen: LOGO mapping OF raw.</p>
+
+        <div class="row">
+          <select id="w_logo_res">
+            <option value="">(geen)</option>
+            <option value="Q">Q</option>
+            <option value="M">M</option>
+            <option value="AI">AI</option>
+            <option value="AQ">AQ</option>
+            <option value="AM">AM</option>
+            <option value="VW">VW</option>
+          </select>
+          <input id="w_logo_idx" placeholder="index (bv 17 of 2 of 52)">
+        </div>
+
+        <div class="row">
+          <select id="w_kind">
+            <option value="holding">holding</option>
+            <option value="input">input</option>
+            <option value="coil">coil</option>
+            <option value="di">di</option>
+          </select>
+          <input id="w_addr" type="number" placeholder="address">
+        </div>
+
+        <div class="row">
+          <input id="w_scale" type="number" step="0.1" value="1">
+          <input id="w_unit" placeholder="unit (°C/%/ppm)">
+        </div>
+
+        <div class="row">
+          <input id="w_min" type="number" step="0.1" placeholder="min">
+          <input id="w_max" type="number" step="0.1" placeholder="max">
+        </div>
+
+        <label><input id="w_writable" type="checkbox"> schrijfbaar</label><br><br>
+
+        <button onclick="adminAddWidget()">Toevoegen aan huidige tab</button>
+        <div id="w_msg" class="small"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gridstack@11.3.1/dist/gridstack-all.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

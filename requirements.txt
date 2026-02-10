@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pymodbus
+pyodbc
+passlib[bcrypt]
+python-multipart
+psutil
